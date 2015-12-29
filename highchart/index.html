@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>模态框</title>
+    <link rel="stylesheet" href="CSS/bootstrap.css">
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+<body>
+<!--添加组件的modal-->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#component">+组件</button>
+<div class="modal" id="component" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">添加一个插件</h4>
+            </div>
+            <div class="modal-content">
+                <img src="img/highchart/pushcolumn.jpg" data-toggle="modal" data-target="#pushcolumn">
+                <img src="img/highchart/pushcolumnmulti.jpg" data-toggle="modal" data-target="#pushcolumnmulti">
+                <img src="img/highchart/pushcolumnlog.jpg" data-toggle="modal" data-target="#pushcolumnlog">
+                <img src="img/highchart/pushgauge.jpg" data-toggle="modal" data-target="#pushgauge">
+                <img src="img/highchart/pushline.jpg" data-toggle="modal" data-target="#pushline">
+                <img src="img/highchart/area.jpg" data-toggle="modal" data-target="#area">
+                <img src="img/highchart/bar.jpg" data-toggle="modal" data-target="#bar">
+                <img src="img/highchart/column.jpg" data-toggle="modal" data-target="#column">
+                <img src="img/highchart/line.jpg" data-toggle="modal" data-target="#line">
+                <img src="img/highchart/line-time.jpg" data-toggle="modal" data-target="#line-time">
+            </div>
+        </div>
+    </div>
+</div>
+<!--各个组件的具体的modal-->
+<div class="modal" id="pushcolumn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="title1">编辑插件</h4>
+            </div>
+            <div class="modal-content">
+                <div class="choice">添加数据</div>
+                <div class="choice">样式配置</div>
+                <div class="choice">数据格式</div>
+
+                <div id="edit1">
+                        <label for="placeholder">控件在面板上占位单元格</label>
+                        <select id="placeholder">
+                            <option value="twotwo">两行两列</option>
+                            <option value="twothree">两行三列</option>
+                            <option value="threethree">三行三列</option>
+                        </select>
+                        <label for="msgld">Msgld</label>
+                        <input type="text" id="msgld" class="input-group">
+                        <img src="img/highchart/pushcolumn.jpg">
+                </div>
+                <div id="edit2">
+                    <input type="text" class="input-group" placeholder="标题">
+                    <input type="text" class="input-group" placeholder="副标题">
+                    <input type="text" class="input-group" placeholder="X轴">
+                    <input type="text" class="input-group" placeholder="Y轴">
+                    <label for="istag">是否显示标签</label>
+                    <select id="istag">
+                        <option value="yes">显示</option>
+                        <option value="no">不显示</option>
+                    </select>
+                    <label for="turntag">标签旋转</label>
+                    <select id="turntag">
+                        <option value="zero">0度</option>
+                        <option value="ninety">90度</option>
+                        <option value="straight">180度</option>
+                        <option value="circle">360度</option>
+                    </select>
+                </div>
+                <div id="edit3">
+                    <pre>
+                        {
+                            "VALUE":{
+                                {
+                                    "NAME":"ANDROID",
+                                    "DATA":[
+                                        [
+                                          "3月"，
+                                          413
+                                        ],
+                                       [
+                                          "4月"，
+                                           311
+                                        ],
+                                     ]
+                                }
+                               {
+                                   "NAME":"IOS",
+                                }
+                            }
+                        }
+                    </pre>
+                </div>
+
+
+                <div id="save">
+                    保存设置此控件
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="JS/jquery.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
+<script>
+//    $("#myModal").modal().css({
+//        width:1200,
+//        height:600
+//    });
+</script>
+</body>
+</html>
