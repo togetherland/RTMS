@@ -5,6 +5,7 @@
     <title>模态框</title>
     <link rel="stylesheet" href="CSS/bootstrap.css">
     <link rel="stylesheet" href="CSS/main.css">
+    <script src="JS/choose.js"></script>
 </head>
 <body>
 <!--添加组件的modal-->
@@ -19,16 +20,16 @@
                 <h4 class="modal-title" id="myModalLabel">添加一个插件</h4>
             </div>
             <div class="modal-content">
-                <img src="img/highchart/pushcolumn.jpg" data-toggle="modal" data-target="#pushcolumn">
-                <img src="img/highchart/pushcolumnmulti.jpg" data-toggle="modal" data-target="#pushcolumnmulti">
-                <img src="img/highchart/pushcolumnlog.jpg" data-toggle="modal" data-target="#pushcolumnlog">
-                <img src="img/highchart/pushgauge.jpg" data-toggle="modal" data-target="#pushgauge">
-                <img src="img/highchart/pushline.jpg" data-toggle="modal" data-target="#pushline">
-                <img src="img/highchart/area.jpg" data-toggle="modal" data-target="#area">
-                <img src="img/highchart/bar.jpg" data-toggle="modal" data-target="#bar">
-                <img src="img/highchart/column.jpg" data-toggle="modal" data-target="#column">
-                <img src="img/highchart/line.jpg" data-toggle="modal" data-target="#line">
-                <img src="img/highchart/line-time.jpg" data-toggle="modal" data-target="#line-time">
+                <img src="img/highchart/pushcolumn.jpg" class="img" data-toggle="modal" data-target="#pushcolumn">
+                <img src="img/highchart/pushcolumnmulti.jpg" class="img" data-toggle="modal" data-target="#pushcolumnmulti">
+                <img src="img/highchart/pushcolumnlog.jpg" class="img" data-toggle="modal" data-target="#pushcolumnlog">
+                <img src="img/highchart/pushgauge.jpg" class="img" data-toggle="modal" data-target="#pushgauge">
+                <img src="img/highchart/pushline.jpg" class="img" data-toggle="modal" data-target="#pushline">
+                <img src="img/highchart/area.jpg" class="img" data-toggle="modal" data-target="#area">
+                <img src="img/highchart/bar.jpg" class="img" data-toggle="modal" data-target="#bar">
+                <img src="img/highchart/column.jpg" class="img" data-toggle="modal" data-target="#column">
+                <img src="img/highchart/line.jpg" class="img" data-toggle="modal" data-target="#line">
+
             </div>
         </div>
     </div>
@@ -44,38 +45,50 @@
                 <h4 class="modal-title" id="title1">编辑插件</h4>
             </div>
             <div class="modal-content">
-                <div class="choice">添加数据</div>
-                <div class="choice">样式配置</div>
-                <div class="choice">数据格式</div>
+                <div id="cho">
+
+                <div id="add" class="choice" onclick="return clicked('edit1')">添加数据</div>
+                <div id="style" class="choice" onclick="return clicked('edit2')">样式配置</div>
+                <div id="data" class="choice" onclick="return clicked('edit3')">数据格式</div>
+
+                </div>
 
                 <div id="edit1">
-                        <label for="placeholder">控件在面板上占位单元格</label>
-                        <select id="placeholder">
+                    <ul>
+                        <li><label for="placeholder">控件在面板上占位单元格</label></li>
+                        <li>
+                            <select id="placeholder">
                             <option value="twotwo">两行两列</option>
                             <option value="twothree">两行三列</option>
                             <option value="threethree">三行三列</option>
-                        </select>
-                        <label for="msgld">Msgld</label>
-                        <input type="text" id="msgld" class="input-group">
-                        <img src="img/highchart/pushcolumn.jpg">
+                            </select>
+                        </li>
+                        <li><label for="msgld">Msgld</label></li>
+                        <li><input type="text" id="msgld" class="input-group"></li>
+                    </ul>
+                    <img src="img/highchart/pushcolumn.jpg">
                 </div>
                 <div id="edit2">
-                    <input type="text" class="input-group" placeholder="标题">
-                    <input type="text" class="input-group" placeholder="副标题">
-                    <input type="text" class="input-group" placeholder="X轴">
-                    <input type="text" class="input-group" placeholder="Y轴">
-                    <label for="istag">是否显示标签</label>
-                    <select id="istag">
+                    <ul id="config">
+                    <li><input type="text" class="input-group" placeholder="标题"></li>
+                    <li><input type="text" class="input-group" placeholder="副标题"></li>
+                    <li><input type="text" class="input-group" placeholder="X轴"></li>
+                    <li><input type="text" class="input-group" placeholder="Y轴"></li>
+                    </ul>
+                    <ul id="config2">
+                    <li><label for="istag">是否显示标签</label></li>
+                    <li><select id="istag">
                         <option value="yes">显示</option>
                         <option value="no">不显示</option>
-                    </select>
-                    <label for="turntag">标签旋转</label>
-                    <select id="turntag">
+                    </select></li>
+                    <li><label for="turntag">标签旋转</label></li>
+                    <li><select id="turntag">
                         <option value="zero">0度</option>
                         <option value="ninety">90度</option>
                         <option value="straight">180度</option>
                         <option value="circle">360度</option>
-                    </select>
+                    </select></li>
+                    </ul>
                 </div>
                 <div id="edit3">
                     <pre>
@@ -115,10 +128,13 @@
 <script src="JS/jquery.min.js"></script>
 <script src="JS/bootstrap.min.js"></script>
 <script>
-//    $("#myModal").modal().css({
-//        width:1200,
-//        height:600
-//    });
+    function clicked(edit){
+
+        this.style.backgroundColor="black";
+
+        document.getElementById(edit).style.backgroundColor="white";
+    }
+
 </script>
 </body>
 </html>
