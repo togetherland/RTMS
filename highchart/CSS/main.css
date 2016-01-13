@@ -6,10 +6,11 @@
     left: 90px;
     width: 500px;
     height: 400px;
-    background-color: #adadad;
+    background-color: #ddd;
 }
 #edit3,
-#edit2{
+#edit2,
+#edit1{
     visibility: hidden;
 }
 #pushcolumn .modal-content{

@@ -1,15 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI Draggable - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="JS/jquery.min.js"></script>
+    <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <style>
+        #draggable { width: 150px; height: 150px; padding: 0.5em; }
+    </style>
+    <script>
+        $(function() {
+            $( "#draggable" ).draggable();
+        });
+    </script>
 </head>
 <body>
-<p id="p2">用js改变段落字体的颜色</p>
-<div id="div">用js给div层添加背景颜色</div>
-<script>
-    document.getElementById("p2").style.color="red";
-    document.getElementById("div").style.backgroundColor="green";
-</script>
+
+<div id="draggable"  class="ui-widget-content">
+    <p>Drag me around</p>
+</div>
+
+
 </body>
 </html>
