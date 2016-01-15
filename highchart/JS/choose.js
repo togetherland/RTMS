@@ -1,9 +1,10 @@
 function max(){
     var max=arguments[0];
-    for(var i=1;i<arguments.length-1;i++){
+    for(var i=1;i<arguments.length;i++){
         if(max<arguments[i])
             max=arguments[i];
     }
+    return max;
 }
 function maxsum(x,l,u){
     if(l>u)
@@ -17,7 +18,7 @@ function maxsum(x,l,u){
         lmax=max(sum,lmax);
     }
     var rmax= 0,sum=0;
-    for(var i=m;i<=u;i++){
+    for(var i=m+1;i<=u;i++){
         sum+=x[i];
         rmax=max(sum,rmax);
     }
