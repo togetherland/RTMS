@@ -1,27 +1,160 @@
-<html lang="en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>jQuery UI Draggable - Default functionality</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="JS/jquery.min.js"></script>
-    <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
-    <style>
-        #draggable { width: 150px; height: 150px; padding: 0.5em; }
-    </style>
-    <script>
-        $(function() {
-            $( "#draggable" ).draggable();
-        });
-    </script>
+    <title> New Document </title>
+    <meta name="article" id="articlelink" content="/technology/jquerynews/20120815-jqueryplugin-dragndrop-gridster/" />
+    <meta name="author" content="www.gbin1.com" />
+    <meta http-equiv="content-script-type" content="text/javascript">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.gridster.css">
+    <script type="text/javascript" src="JS/jquery.min.js"></script>
+    <script type="text/javascript" src="JS/jquery.gridster.js" charset="utf-8"></script>
 </head>
+<!--
+<script type="text/javascript" src="dist/jquery.coords.js"></script>
+<script type="text/javascript" src="dist/jquery.draggable.js"></script>
+<script type="text/javascript" src="dist/jquery.collision.js"></script>-->
+<style>
+    body{
+        font-family: Helvetica, arial, sans-serif;
+        margin:150px auto;
+        background: red;
+        color: #fff;
+        font-size: 12px;
+        width:940px;
+    }
+
+    a{
+        color: #808080;
+    }
+
+    h1{
+        padding:10px;
+        font-size: 38px;
+    }
+
+    ul{
+        list-style:block;
+    }
+
+    li{
+        background: blue;
+    }
+
+    .s1{
+        background: blue;
+    }
+
+    .s2{
+        background: green;
+    }
+
+    .s3{
+        background:yellow;
+    }
+
+    .s4{
+        background: black;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".gridster ul").gridster({
+            //widget_selector: "> li #sss",
+            //extra_rows: 1111,//设置多余的行数 默认15行 min_rows
+            //extra_cols: 9,//设置多余的列数 列数减一 默认为1
+            //max_size_x: 6,//设置每个widget x的size 默认为 6
+            //max_size_y: 6,//设置每个widget y的size 默认为 6
+            //autogenerate_stylesheet: true,//自动生成widget的样式 默认为true
+            avoid_overlapped_widgets: false,//不让你从数据库或是其他途径 生成的 widget 互相覆盖 默认为true
+            //serialize_params: function($w, wgd) {//当调用serialize()触发的事件 $w当前的li wgd是{col: 4, row: 3, size_x: 2, size_y: 1,el:b.fn.b.init[1]}
+            //alert($w+"---"+wgd);
+            //return { col: wgd.col, row: wgd.row }
+            //},
+
+            /*draggable.start: function(event, ui){},
+             draggable.drag: function(event, ui){},
+             draggable.stop: function(event, ui){},
+             collision.on_overlap_start: function(collider_data) { },
+             collision.on_overlap: function(collider_data) { },
+             collision.on_overlap_stop: function(collider_data) { },*/
+            widget_margins: [10, 10],//设置每个 widget margin 前一个参数是y 后面是x
+            widget_base_dimensions: [140, 140],//设置 widget width height
+            draggable:{
+                start: function(event, ui){
+                    //alert("statr");
+                    console.log("start");
+                },
+                drag:function(event, ui){
+                    console.log("drag");
+                },
+                stop: function(event, ui){
+                    console.log("stop");
+                }
+            },
+            collision:{
+                on_overlap_start: function(collider_data) {
+                    // alert(collider_data);
+                    console.log("on_overlap_start");},
+                on_overlap:function(collider_data) {console.log("on_overlap"); },
+                on_overlap_stop:function(collider_data) { console.log("on_overlap_stop");}
+            }
+        });
+
+
+    });
+    function test(){
+        var gridster = $(".gridster ul").gridster().data('gridster');//只能通过 样式得到ul
+        alert("row:"+gridster.rows+"--cols"+gridster.cols);
+        // alert(gridster);
+        gridster.add_widget('<li class="new">The HTML of the widget...</li>', 2, 1);//添加一个widget
+        // gridster.remove_widget( $('.gridster li').eq(3) );//删除某个
+        var json = gridster.serialize();//得到 所有的 widget
+        alert(json);
+        //gridster.disable( );
+    }
+    function test1(){
+        var gridster = $(".gridster ul").gridster().data('gridster');//只能通过 样式得到ul
+        var g = gridster.serialize($(".s1"));
+        alert(g);
+        for(var v in g){
+            //alert(v);
+        }
+    }
+</script>
 <body>
 
-<div id="draggable"  class="ui-widget-content">
-    <p>Drag me around</p>
-</div>
+
+        <div class="gridster">
+            <ul>
+            <li id="sss" class="s1" data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+                <div>
+                    open source
+                </div>
+            </li>
+            <li class="s1" data-row="2" data-col="1" data-sizex="1" data-sizey="1">
+
+            </li>
+            <li class="s1" data-row="3" data-col="1" data-sizex="1" data-sizey="1"></li>
+
+            <li class="s2" data-row="1" data-col="2" data-sizex="2" data-sizey="1"></li>
+            <li class="s4" data-row="2" data-col="2" data-sizex="2" data-sizey="2"></li>
+
+            <li class="s1" data-row="1" data-col="4" data-sizex="1" data-sizey="1"></li>
+            <li class="s2" data-row="2" data-col="4" data-sizex="2" data-sizey="1"></li>
+            <li class="s1" data-row="3" data-col="4" data-sizex="1" data-sizey="1"></li>
+
+            <li class="s1" data-row="1" data-col="5" data-sizex="1" data-sizey="1"></li>
+            <li class="s1" data-row="3" data-col="5" data-sizex="1" data-sizey="1"></li>
+
+            <li class="s1" data-row="1" data-col="6" data-sizex="1" data-sizey="1"></li>
+            <li class="s3" data-row="2" data-col="6" data-sizex="1" data-sizey="2"></li>
+            </ul>
+        </div>
 
 
+<input type='button' value='test' onclick='test()'/>
+<input type='button' value='test1' onclick='test1()'/>
 </body>
 </html>

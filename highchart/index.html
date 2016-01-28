@@ -5,11 +5,18 @@
     <title>数据监控网站</title>
     <link rel="stylesheet" href="CSS/bootstrap.css">
     <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/jquery.gridster.css">
     <script src="JS/choose.js"></script>
     <script src="JS/jquery.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="JS/highcharts.js"></script>
+    <script src="JS/jquery.gridster.js"></script>
+    <style>
+        .gridster ul{margin:0;}
+        .gridster ul li{list-style-type:none;border:1px solid #f0ad4e;}
+
+    </style>
 </head>
 <body onload="clicked1('append','edit1')">
 <!--添加组件的modal-->
@@ -156,11 +163,38 @@
 </div>
 
 <!--用于显示highchat绘制的表格-->
-<div id="container" style="width: 550px;height: 400px;margin: 0 auto"></div>
+<div class="gridster">
+    <ul id="ul"></ul>
+</div>
 <script>
+
+
+</script>
+<script>
+    var gridster;
+    $(function(){
+
+        gridster = $(".gridster ul").gridster({    //通过jquery选择DOM实现gridster
+            widget_base_dimensions: [100, 120],    //模块的宽高 [宽,高]
+            widget_margins: [5, 5],    //模块的间距 [上下,左右]
+//            draggable: {
+//                handle: '.con'    //模块内定义拖动的元素<header>，这里也支持jquery选择器，如"span.drag_handle"
+//            }
+            draggable:{
+                start: function(event, ui){
+
+                    console.log("start");
+                },
+                drag:function(event, ui){
+                    console.log("drag");
+                },
+                stop: function(event, ui){
+                    console.log("stop");
+                }
+            }
+        }).data('gridster');
+    });
     $("#save").click(function () {
-    //$("#component").hide();
-    //$("#pushcolumn").hide();
     var title={
         text:'月平均气温'
     };
@@ -214,24 +248,13 @@
     ];
     var json={};
     json.title=title;
-    //json.subtitle = subtitle;
     json.xAxis = xAxis;
     json.yAxis = yAxis;
     json.tooltip = tooltip;
     json.legend = legend;
     json.series = series;
-    var oDiv = document.createElement('div');
-
-    oDiv.style.width=550;
-    oDiv.style.height=400;
-    oDiv.style.marginLeft="auto";
-    oDiv.style.marginRight="auto";
-    oDiv.style.marginTop=0;
-    oDiv.style.marginBottom=0;
-    //oDiv.highcharts(json);
-    document.body.appendChild(oDiv);
-   $(oDiv).highcharts(json);
-        $(oDiv).draggable();
+    var li=gridster.add_widget('<li class="con">The HTML of the widget...</li>', 4, 2);
+    $(li).highcharts(json);
 
      });
 </script>
@@ -240,9 +263,6 @@
 <script>
     $("#pushcolumn").draggable();
     $("#component").draggable();
-    $("#container").draggable();
-//    $('#pushcolumn').modal({backdrop: 'static', keyboard: false});
-//    $('#component').modal({backdrop: 'static', keyboard: false});
 </script>
 </body>
 </html>
