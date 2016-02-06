@@ -70,3 +70,5 @@ select,input{
 #edit2 #config li{
     margin-bottom: 10px;
 }
+.gridster ul{margin:0;}
+.gridster ul li{list-style-type:none;border:1px solid #f0ad4e;}
